@@ -1,15 +1,25 @@
-body{
+body, h1 {
     margin: 0;
     padding: 0;
 }
 .container {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+    gap: 10px;
+}
+.content {
+    display: flex;
     justify-content: center;
     align-items: center;
     width: auto;
-    height: 700px;
+    height: 650px;
     background-color: lightblue;
     gap: 20px;
+    padding: 0;
+    margin: 0;
 }
 .gridItem {
     background-color: white;
@@ -20,4 +30,8 @@ body{
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+#slideValue {
+    margin: 0;
+    padding: 0;
 }
