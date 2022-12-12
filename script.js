@@ -1,21 +1,52 @@
 const container = document.querySelector('.girdContainer');
 const buttons = document.querySelectorAll('button');
+const slideBar = document.getElementById('slideBar');
+const slideValue = document.getElementById('slideValue');
 
-let numDivs = 20;
+let numDivs = slideBar.value;
 
 makeDivs(numDivs);
 setGrid();
-const gridItems = document.querySelectorAll('.gridItem');
+let gridItems = document.querySelectorAll('.gridItem');
+slideValue.textContent = `${slideBar.value}`;
 
 Default();
+slideBar.oninput = function() { resizeDiv() };
 buttons.forEach(button => button.addEventListener('click', () => {
-    Default();
+    slideBar.oninput = function() { resizeDiv() };
     modeSelection(button);
 }));
 
+//The divs won't reset when I change the size
+function resizeDiv()
+{
+    const newValue = slideBar.value;
+    const currentValue = numDivs;
+
+    if (newValue != currentValue)
+    {
+        numDivs = newValue;
+        makeDivs(numDivs);
+        setGrid();
+        gridItems = document.querySelectorAll('.gridItem');
+        gridItems.forEach(item => item.style.backgroundColor = 'white');
+        Default();
+        slideValue.textContent = `${newValue}`;
+    }
+}
+
+function randomColor()
+{
+    const r = randomBetween(0, 255);
+    const g = randomBetween(0, 255);
+    const b = randomBetween(0, 255);
+
+    const rgb = `rgb(${r}, ${g}, ${b})`;
+    return rgb;
+}
 
 
-
+const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min) +1);
 
 function Default()
 {
@@ -31,6 +62,12 @@ function modeSelection(button)
             item.style.backgroundColor = 'black';
         }));
     }
+    else if (button.classList.value == 'rainbow')
+    {
+        gridItems.forEach(item => item.addEventListener('mouseover', () => {
+            item.style.backgroundColor = randomColor();
+        }));
+    }
     else if (button.classList.value == 'erase')
     {
         gridItems.forEach(item => item.addEventListener('mouseover', () => {
@@ -39,6 +76,7 @@ function modeSelection(button)
     }
     else if (button.classList.value == 'clear')
     {
+        Default();
         gridItems.forEach(item => item.style.backgroundColor = 'white');
     }
 }
