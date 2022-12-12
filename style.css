@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 700px;
+    background-color: lightblue;
+    gap: 20px;
+}
+.gridItem {
+    background-color: white;
+}
+.control {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
