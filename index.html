@@ -10,13 +10,19 @@
 </head>
 <body>
     <div class="container">
-        <div class="control">
-            <button class="normal">Normal Mode</button>
-            <button class="rainbow">Rainbow Mode</button>
-            <button class="erase">Erase</button>
-            <button class="clear">Clear</button>
+        <h1>Etch-A-Sketch</h1>
+        <div class="content">
+            <div class="control">
+                <p id="slideValue"></p>
+                <input type="range" min="2" max="50" value="25" id="slideBar">
+                <button class="normal">Normal Mode</button>
+                <button class="rainbow">Rainbow Mode</button>
+                <!--<button id="picker" class="preference"><p>Color picker</p><input type="color" value="#0000"></button>-->
+                <button class="erase">Erase</button>
+                <button class="clear">Clear</button>
+            </div>
+            <div class="girdContainer"></div>
         </div>
-        <div class="girdContainer"></div>
     </div>
 </body>
 </html>
